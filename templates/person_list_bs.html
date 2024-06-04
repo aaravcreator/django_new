@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Person List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="mb-4">Person List</h1>
+
+        <a href="{% url 'create_person' %}" class="btn btn-primary mb-3">Create Person</a>
+        
+
+        {% for person in persons %}
+
+        {% if person.gender == "MALE" %}
+        <div class="card mb-3" style="background-color: #007bff; color: white;">
+            <div class="card-body">
+                <p>##{{person.id}}</p>
+                <p><i class="fas fa-user"></i> Name: <strong>{{ person.name }}</strong></p>
+                <p><i class="fas fa-envelope"></i> Email: <strong>{{ person.email }}</strong></p>
+                <p><i class="fas fa-phone"></i> Phone: <strong>{{ person.phone }}</strong></p>
+                <p><i class="fas fa-home"></i> Address: <strong>{{ person.address }}</strong></p>
+                <p><i class="fas fa-birthday-cake"></i> Age: <strong>{{ person.age }}</strong></p>
+                <p><i class="fas fa-venus-mars"></i> GENDER: <strong>{{ person.gender }}</strong></p>
+                <a href="{% url 'update_person' person.id %}" class="btn btn-warning mb-3">Update Person</a>
+                <a href="{% url 'delete_person' person.id %}" class="btn btn-danger mb-3">Delete Person</a>
+            </div>
+        </div>
+        {% else %}
+        <div class="card mb-3" style="background-color: #ffc0cb; color: black;">
+            <div class="card-body">
+                <p>##{{person.id}}</p>
+                <p><i class="fas fa-user"></i> Name: <strong>{{ person.name }}</strong></p>
+                <p><i class="fas fa-envelope"></i> Email: <strong>{{ person.email }}</strong></p>
+                <p><i class="fas fa-phone"></i> Phone: <strong>{{ person.phone }}</strong></p>
+                <p><i class="fas fa-home"></i> Address: <strong>{{ person.address }}</strong></p>
+                <p><i class="fas fa-birthday-cake"></i> Age: <strong>{{ person.age }}</strong></p>
+                <p><i class="fas fa-venus-mars"></i> GENDER: <strong>{{ person.gender }}</strong></p>
+                <a href="{% url 'update_person' person.id %}" class="btn btn-warning mb-3">Update Person</a>
+                <a href="{% url 'delete_person' person.id %}" class="btn btn-danger mb-3">Delete Person</a>
+            </div>
+        </div>
+        {% endif %}
+
+        {% endfor %}
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

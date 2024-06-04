@@ -28,16 +28,21 @@ def profile_page(request,id):
     return HttpResponse(f"<h1>Profile Page of #{id}</h1>")
 
 def index_page(request):
-    username = request.POST.get('user_name')
-    password = request.POST.get('password')
-    if username is not None  and password is not None:
-        user_data = f"Thanks for submitting! {username} - {password}"
-        return HttpResponse(user_data)
+
+    if request.method == "POST":
+        print(request.POST)
+        username = request.POST.get('user_name')
+        password = request.POST.get('password')
+        print(username,password)
+        return HttpResponse(f"<h1>Username : {username} , Password : {password}</h>")
+    # if username is not None  and password is not None:
+    #     user_data = f"Thanks for submitting! {username} - {password}"
+    #     return HttpResponse(user_data)
     context = {
         
         'name':'RAM',
         'age':55,
-        'is_married':True,
+        'is_married':False,
         'skills':['Python','Django','Flask','Java','C++']
         }
     

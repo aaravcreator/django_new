@@ -6,6 +6,11 @@
     <title>Document</title>
 </head>
 <body>
+
+
+
+
+
     <h1>THIS IS INDEX PAGE</h1>
     <p>Name:{{name}}</p>
     <p>Age:{{age}}</p>
@@ -24,11 +29,10 @@
     {{skills}}
     <hr>
     {% for skill in skills %}
-    {% if skill == "Django" %}
+
+
     <div style="color:red; background-color: snow;">{{skill}}</div>
-    {% else %}
-    <div>{{skill}}</div>
-    {% endif %}
+    
     
 
     {% endfor %}
@@ -36,7 +40,7 @@
 
 
 
-    <form action="" method="POST">
+    <form action="" method="POST" >
         {% csrf_token %}
         <label for="username">Username</label>
         <input type="text" name="user_name" id="username">

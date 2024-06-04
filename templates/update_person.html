@@ -1,0 +1,10 @@
+
+
+<h1>Update person {{person.name}}</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{form}}
+
+    <button type="submit">Update Person</button>
+</form>

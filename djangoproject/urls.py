@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 # from .views import index,contact,services,profile_page
 from .views import *
+from myapp.views import person_list,create_person,update_person,delete_person
 # from djangoproject import views
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,6 +26,11 @@ urlpatterns = [
     path('',index_page,name="index"),
     path('contact/',contact,name="contact"),
     path('services/',services),
+    path("person_list/",person_list,name="person_list"),
+    path("personcreate/",create_person,name="create_person"),
+    path('person_update/<int:id>/',update_person,name="update_person"),
+    path('person_delete/<int:id>/',delete_person,name="delete_person"),
     path('profile/<int:id>/',profile_page)
+    
 
 ]

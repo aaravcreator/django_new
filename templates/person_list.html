@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Person List</h1>
+
+    
+
+
+    {% for person in persons %}
+
+
+    {% if person.gender == "MALE" %}
+    <div style="background-color: blue; color:white; padding:10px; border-radius: 10px;">
+        <p>Name : {{ person.name }} </p>
+        <p>Email : <strong>{{person.email}}</strong></p>
+        <p>Phone : <strong>{{person.phone}}</strong></p>
+        <p>Address : <strong>{{person.address}}</strong></p>
+        <p>Age : <strong>{{person.age}}</strong></p>
+        <p>GENDER : <strong>{{person.gender}}</strong></p>
+    </div>
+    {% else %}
+
+    <div style="background-color: pink; color:black; padding:10px; border-radius: 10px;">
+        <p>Name : <strong>{{ person.name }}</strong> </p>
+        <p>Email : <strong>{{person.email}}</strong></p>
+        <p>Phone : <strong>{{person.phone}}</strong></p>
+        <p>Address : <strong>{{person.address}}</strong></p>
+        <p>Age : <strong>{{person.age}}</strong></p>
+        <p>GENDER : <strong>{{person.gender}}</strong></p>
+       </div>
+
+    {% endif %}
+
+    <hr>
+    {% endfor %}
+</body>
+</html>
