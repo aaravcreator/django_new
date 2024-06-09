@@ -3,6 +3,12 @@ from django.shortcuts import HttpResponse,render
 # Example index view function
 from random import randint
 
+
+def base_page(request):
+    return render(request,'base.html')
+
+
+
 def index(request):
     random_value = randint(50,5000)
     print(random_value)

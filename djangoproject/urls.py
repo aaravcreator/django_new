@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # mapping the view function to root directory
     path('',index_page,name="index"),
+    path('base/',base_page),
     path('contact/',contact,name="contact"),
     path('services/',services),
     path("person_list/",person_list,name="person_list"),
