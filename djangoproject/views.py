@@ -3,7 +3,7 @@ from django.shortcuts import HttpResponse,render
 # Example index view function
 from random import randint
 
-
+from myapp.models import Mission
 def base_page(request):
     return render(request,'base.html')
 
@@ -44,7 +44,11 @@ def index_page(request):
     # if username is not None  and password is not None:
     #     user_data = f"Thanks for submitting! {username} - {password}"
     #     return HttpResponse(user_data)
+
+    missions = Mission.objects.all()
     context = {
+        'missions':missions,
+
         
         'name':'RAM',
         'age':55,
@@ -52,7 +56,7 @@ def index_page(request):
         'skills':['Python','Django','Flask','Java','C++']
         }
     
-    return render(request,'index.html',context)
+    return render(request,'flex_base.html',context)
 
 
     

@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 
 {% block title %}
 Person List
@@ -7,12 +9,23 @@ Person List
 
 {% block content %}
     <div class="container mt-5">
+
+        <div class="d-flex flex-row justify-content-center">
+            <img src="{% static 'images/burger.png' %}" alt="Burger" srcset="" height="300px" width="auto">
+        </div>
         <h1 class="mb-4">Person List</h1>
 
-        <h1>MALE COUNT <span class="badge bg-primary">{{male_count}}</span></h1>
-        <h1>FEMALE COUNT <span class="badge bg-secondary">{{female_count}}</span></h1>
 
-        <a href="{% url 'create_person' %}" class="btn btn-primary mb-3">Create Person</a>
+        <div class="d-flex flex-column flex-md-row justify-content-around">
+
+            <h1><i class="fa-solid fa-person"></i> MALE COUNT <span class="badge bg-primary">{{male_count}}</span></h1>
+            <h1> <i class="fa-solid fa-person-dress"></i> FEMALE COUNT <span class="badge bg-secondary">{{female_count}}</span></h1>
+    
+        </div>
+
+        
+        <a href="{% url 'person_list' %}" class="btn btn-outline-primary mb-3">Clear Filter <i class="fa-solid fa-xmark"></i></a>
+        <a href="{% url 'create_person' %}" class="btn btn-primary mb-3">Create Person <i class="fa-solid fa-plus"></i></a>
         
 
         {% for person in persons %}

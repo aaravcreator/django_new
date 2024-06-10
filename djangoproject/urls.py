@@ -19,6 +19,10 @@ from django.urls import path
 # from .views import index,contact,services,profile_page
 from .views import *
 from myapp.views import person_list,create_person,update_person,delete_person
+
+
+from django.conf import settings
+from django.conf.urls.static import static
 # from djangoproject import views
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,4 +38,4 @@ urlpatterns = [
     path('profile/<int:id>/',profile_page)
     
 
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
