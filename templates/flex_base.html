@@ -1146,25 +1146,26 @@
 
         <div class="row gy-5">
 
+          {% for blog in blogs %}
           <div class="col-xl-4 col-md-6">
             <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="100">
 
               <div class="post-img position-relative overflow-hidden">
-                <img src="assets/img/blog/blog-1.jpg" class="img-fluid" alt="">
-                <span class="post-date">December 12</span>
+                <img src="{{blog.image.url}}" class="img-fluid" alt="">
+                <span class="post-date">{{blog.created_at}}</span>
               </div>
 
               <div class="post-content d-flex flex-column">
 
-                <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis</h3>
+                <h3 class="post-title">{{blog.title}}</h3>
 
                 <div class="meta d-flex align-items-center">
                   <div class="d-flex align-items-center">
-                    <i class="bi bi-person"></i> <span class="ps-2">Julia Parker</span>
+                    <i class="bi bi-person"></i> <span class="ps-2">{{blog.author}}</span>
                   </div>
                   <span class="px-3 text-black-50">/</span>
                   <div class="d-flex align-items-center">
-                    <i class="bi bi-folder2"></i> <span class="ps-2">Politics</span>
+                    <i class="bi bi-folder2"></i> <span class="ps-2">{{blog.category.name}}</span>
                   </div>
                 </div>
 
@@ -1176,6 +1177,8 @@
 
             </div>
           </div><!-- End post item -->
+
+          {% endfor %}
 
           <div class="col-xl-4 col-md-6">
             <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="200">
@@ -1302,7 +1305,8 @@
           </div>
 
           <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+            <form action="" method="post"  data-aos="fade-up" data-aos-delay="200">
+              {% csrf_token %}
               <div class="row gy-4">
 
                 <div class="col-md-6">
@@ -1311,6 +1315,9 @@
 
                 <div class="col-md-6 ">
                   <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+                </div>
+                <div class="col-md-12">
+                  <input type="number" class="form-control" name="phone" placeholder="Your Phone" required="">
                 </div>
 
                 <div class="col-md-12">

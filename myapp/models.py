@@ -25,4 +25,15 @@ class Mission(models.Model):
 
     def __str__(self):
         return self.name
+    
+class ContactData(models.Model):
+    name = models.CharField(max_length=255,blank=False,null=True)
+    email = models.EmailField()
+    # description = models.FileField()
+    subject = models.CharField(max_length=255)
+    phone = models.CharField(max_length=15,null=True,blank=True)
+    message = models.TextField(null=True,blank=True)
+    timestamp = models.DateTimeField(auto_now_add=True,editable=True,null=True)
+    def __str__(self):
+        return self.name
 

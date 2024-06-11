@@ -1,9 +1,10 @@
-from django.shortcuts import HttpResponse,render
+from django.shortcuts import HttpResponse,render,redirect
 
 # Example index view function
 from random import randint
 
-from myapp.models import Mission
+from myapp.models import Mission,ContactData
+from blog.models import BlogPost
 def base_page(request):
     return render(request,'base.html')
 
@@ -36,18 +37,27 @@ def profile_page(request,id):
 def index_page(request):
 
     if request.method == "POST":
-        print(request.POST)
-        username = request.POST.get('user_name')
-        password = request.POST.get('password')
-        print(username,password)
-        return HttpResponse(f"<h1>Username : {username} , Password : {password}</h>")
+
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+
+        ContactData.objects.create(phone=phone,name=name,email=email,subject=subject,message=message)
+    
+
+
+        redirect('index')
     # if username is not None  and password is not None:
     #     user_data = f"Thanks for submitting! {username} - {password}"
     #     return HttpResponse(user_data)
 
     missions = Mission.objects.all()
+    blogs = BlogPost.objects.filter(is_published=True)
     context = {
         'missions':missions,
+        'blogs':blogs,
 
         
         'name':'RAM',
